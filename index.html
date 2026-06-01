@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUROPATH — Solución Global IA para Retención Neurodivergente</title>
+    <style>
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        :root {
+            --primary: #0891b2;
+            --primary-dark: #0e7490;
+            --secondary: #06b6d4;
+            --accent: #3b82f6;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, #0891b2 0%, #3b82f6 100%);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: white;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1); z-index: 1000; padding: 1rem 0;
+            transition: transform 0.5s ease;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.8rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600;
+            transition: all 0.3s; display: inline-block; border: none; cursor: pointer; font-size: 1rem;
+        }
+        .btn-primary {
+            background: var(--gradient); color: white;
+            box-shadow: 0 4px 15px rgba(8,145,178,0.4);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(8,145,178,0.5); }
+        .btn-secondary { background: white; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-secondary:hover { background: var(--primary); color: white; }
+        
+        .btn-video {
+            background: #ef4444; color: white; border: none; display: flex; align-items: center; gap: 10px;
+            animation: pulse-btn 2s infinite;
+        }
+        @keyframes pulse-btn { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+
+        /* --- HERO --- */
+        .hero {
+            margin-top: 80px; padding: 6rem 2rem; min-height: 90vh;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            display: flex; align-items: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(8,145,178,0.1) 0%, transparent 70%); border-radius: 50%;
+        }
+        .hero-container {
+            max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1;
+        }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; }
+        .hero-content .subtitle { font-size: 1.3rem; color: var(--gray); margin-bottom: 2rem; font-weight: 500; }
+        .hero-content p { font-size: 1.1rem; color: var(--gray); margin-bottom: 2rem; line-height: 1.8; }
+        .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .urgency-banner {
+            margin-top: 2rem; padding: 1rem;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b; border-radius: 8px; font-weight: 600; color: #92400e;
+        }
+
+        /* --- HERO IMAGE --- */
+        .hero-image {
+            position: relative; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s;
+            background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);
+            padding: 40px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .hero-image:hover { transform: perspective(1000px) rotateY(0deg); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .hero-placeholder {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .hero-placeholder-text {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        .screen-overlay {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.9); padding: 1rem 1.5rem; border-radius: 50px;
+            color: white; font-size: 0.9rem; backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 182, 212, 0.5); white-space: nowrap;
+        }
+        .screen-overlay .label { color: var(--secondary); font-weight: 600; margin-right: 10px; }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            background: var(--dark); color: white; padding: 3rem 2rem;
+            position: relative; z-index: 10; margin-top: -4rem;
+        }
+        .stats-container {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;
+        }
+        .stat-item h3 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem; }
+        .stat-item p { color: #94a3b8; font-size: 0.95rem; }
+
+        /* --- SECTIONS --- */
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; color: var(--dark); }
+        .section-subtitle { text-align: center; color: var(--gray); font-size: 1.2rem; margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* --- PROBLEM --- */
+        .problem { background: white; }
+        .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .problem-content h3 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--dark); }
+        .problem-content p { color: var(--gray); margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; }
+        .solution-box {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); padding: 2rem;
+            border-radius: 12px; border-left: 4px solid var(--primary);
+        }
+        .solution-box strong { color: var(--primary-dark); display: block; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .problem-image {
+            position: relative; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);
+            padding: 40px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .problem-image img { width: 100%; height: auto; display: block; }
+        .problem-placeholder {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .problem-placeholder-text {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        .notification-badge {
+            position: absolute; top: 20px; right: 20px;
+            background: rgba(255, 255, 255, 0.95); padding: 1rem; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 260px;
+            backdrop-filter: blur(10px); border: 1px solid rgba(6, 182, 212, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .notification-badge .title { font-weight: 700; color: var(--dark); font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .notification-badge .message { color: var(--gray); font-size: 0.85rem; }
+
+        /* --- FEATURES --- */
+        .features { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .feature-card {
+            background: white; padding: 2.5rem; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--dark); }
+        .feature-card p { color: var(--gray); line-height: 1.7; }
+
+        /* --- BENEFITS --- */
+        .benefits { background: white; }
+        .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .benefits-list { list-style: none; }
+        .benefits-list li {
+            padding: 1.5rem; margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 8px; border-left: 4px solid var(--primary);
+            font-size: 1.1rem; transition: transform 0.3s; opacity: 0; transform: translateX(-20px);
+        }
+        .benefits-list li.visible { opacity: 1; transform: translateX(0); transition: all 0.6s ease; }
+        .benefits-list li::before { content: '✓'; color: var(--primary); font-weight: bold; margin-right: 1rem; font-size: 1.3rem; }
+        .benefits-image { 
+            border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);
+            padding: 40px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .benefits-image img { width: 100%; height: auto; display: block; }
+        .benefits-placeholder {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .benefits-placeholder-text {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* --- DASHBOARD --- */
+        .dashboard {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white; padding: 6rem 2rem; text-align: center;
+        }
+        .dashboard .section-title, .dashboard .section-subtitle { color: white; }
+        .dashboard-container {
+            max-width: 1000px; margin: 3rem auto 0;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+            background: #1e293b;
+            padding: 40px;
+            text-align: center;
+        }
+        .dashboard-container img { width: 100%; height: auto; display: block; }
+        .dashboard-placeholder {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .dashboard-placeholder-text {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* --- PRICING --- */
+        .pricing { background: white; }
+        .pricing-card {
+            max-width: 700px; margin: 3rem auto;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px; padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid var(--primary);
+        }
+        .pricing-header { text-align: center; margin-bottom: 2rem; }
+        .pricing-header h3 { font-size: 2rem; color: var(--dark); margin-bottom: 0.5rem; }
+        .price { font-size: 3.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 1rem 0; }
+        .price-note { color: var(--gray); font-size: 1rem; }
+        .features-list { list-style: none; margin: 2rem 0; text-align: left; }
+        .features-list li { padding: 1rem 0; border-bottom: 1px solid #cbd5e1; display: flex; align-items: center; }
+        .features-list li::before { content: '✓'; color: var(--primary); font-weight: bold; margin-right: 1rem; font-size: 1.3rem; }
+        .pricing-cta { text-align: center; margin-top: 2rem; }
+        .disclaimer {
+            background: #fef3c7; padding: 1.5rem; border-radius: 12px; margin-top: 2rem;
+            border-left: 4px solid #f59e0b;
+        }
+        .disclaimer strong { color: #92400e; display: block; margin-bottom: 0.5rem; }
+        .disclaimer p { color: #92400e; line-height: 1.7; font-size: 0.9rem; }
+
+        /* --- AUDIENCE --- */
+        .audience { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); text-align: center; }
+        .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .audience-item {
+            background: white; padding: 2rem; border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s;
+        }
+        .audience-item:hover { transform: translateY(-5px); }
+        .audience-item h4 { color: var(--dark); font-size: 1.2rem; margin-top: 1rem; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--dark); color: white; padding: 3rem 2rem 2rem; text-align: center; }
+        .footer-content { max-width: 800px; margin: 0 auto; }
+        .footer-content h2 { font-size: 2rem; margin-bottom: 1rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .footer-content p { color: #94a3b8; margin-bottom: 1rem; }
+        .footer-content a { color: var(--secondary); text-decoration: none; }
+        .footer-bottom { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #334155; color: #64748b; }
+
+        /* --- VIDEO MODE --- */
+        body.video-mode {
+            background: black;
+            overflow: hidden;
+        }
+        body.video-mode nav { transform: translateY(-100%); }
+        body.video-mode .hero { margin-top: 0; min-height: 100vh; justify-content: center; }
+        body.video-mode section { padding: 4rem 2rem; }
+        body.video-mode .container { max-width: 1000px; }
+        body.video-mode .pricing-card { background: #1e293b; border-color: var(--secondary); }
+        body.video-mode .pricing-header h3, body.video-mode .features-list li { color: white; }
+        body.video-mode .features-list li { border-color: #334155; }
+        body.video-mode .price-note { color: #cbd5e1; }
+        body.video-mode .disclaimer { background: rgba(254, 243, 199, 0.1); border-color: #f59e0b; }
+        body.video-mode .disclaimer strong, body.video-mode .disclaimer p { color: #fde68a; }
+        
+        .video-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 9999;
+            display: none; justify-content: center; align-items: center;
+            flex-direction: column; color: white;
+        }
+        .video-overlay.active { display: flex; }
+        .video-loader {
+            border: 4px solid #f3f3f3; border-top: 4px solid var(--primary);
+            border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-container, .problem-grid, .benefits-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VIDEO OVERLAY -->
+    <div class="video-overlay" id="videoOverlay">
+        <div class="video-loader"></div>
+        <h3>Preparando Demo...</h3>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">NEUROPATH</div>
+            <ul class="nav-links">
+                <li><a href="#problema">El Problema</a></li>
+                <li><a href="#funciones">Funciones</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#piloto">Inversión</a></li>
+            </ul>
+            <a href="https://wa.me/573170201389?text=Hola%20Johanna,%20Me%20interesa%20NEUROPATH" class="btn btn-primary" target="_blank">Contactar</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>NEUROPATH</h1>
+                <p class="subtitle">By NEURONOVA GLOBAL</p>
+                <p>La ÚNICA solución global 360° de IA para retención de estudiantes neurodivergentes (TDAH, Autismo, Dislexia).</p>
+                
+                <div class="cta-group">
+                    <a href="https://wa.me/573170201389?text=Hola%20Johanna,%20Quiero%20agendar%20una%20demo%20de%20NEUROPATH" class="btn btn-primary" target="_blank">Agendar Demo</a>
+                    <button onclick="startVideoDemo()" class="btn btn-video">▶ Ver Video Demo</button>
+                </div>
+
+                <div class="urgency-banner">
+                    ⚡ Únicamente 5 piloto institucionales disponibles este semestre.
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="hero-placeholder">🧠</div>
+                <div class="hero-placeholder-text">Dashboard IA Predictiva<br/>Retención Estudiantil</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>360°</h3>
+                <p>Solución Integral</p>
+            </div>
+            <div class="stat-item">
+                <h3>+40%</h3>
+                <p>Retención Mejorada</p>
+            </div>
+            <div class="stat-item">
+                <h3>85%</h3>
+                <p>Precisión IA</p>
+            </div>
+            <div class="stat-item">
+                <h3>1,400%</h3>
+                <p>ROI Año 1</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROBLEM SECTION -->
+    <section id="problema" class="problem">
+        <div class="container">
+            <h2 class="section-title">El Problema Global</h2>
+            <p class="section-subtitle">20% de estudiantes neurodivergentes abandona por falta de regulación emocional personalizada.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h3>Situación Actual</h3>
+                    <p>Las instituciones reaccionan demasiado tarde. Otros sistemas solo abordan por secciones (una feature aquí, otra allá). Nada integrado, nada predictivo, nada efectivo.</p>
+                    
+                    <div class="solution-box">
+                        <strong>💡 NEUROPATH Resuelve:</strong>
+                        IA centralizada que PREDICE deserción ANTES de que ocurra + intervenciones automáticas personalizadas por neurotipo.
+                    </div>
+                </div>
+                
+                <div class="problem-image">
+                    <div class="problem-placeholder">⚠️</div>
+                    <div class="problem-placeholder-text">Alertas Tempranas<br/>Predictivas + Accionables</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section id="funciones" class="features">
+        <div class="container">
+            <h2 class="section-title">¿Qué Hace NEUROPATH?</h2>
+            <p class="section-subtitle">Ecosistema 360° integrado para estudiantes, profesores e instituciones</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🎓</div>
+                    <h3>Para Estudiantes</h3>
+                    <p>Dashboard de regulación emocional + recursos personalizados por neurotipo + tutorías IA 24/7.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👩‍🏫</div>
+                    <h3>Para Profesores</h3>
+                    <p>Alertas IA sobre quién está en riesgo + recomendaciones de intervención + reportes de clase automáticos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏫</div>
+                    <h3>Para Instituciones</h3>
+                    <p>Dashboards ejecutivos + métricas retención + ROI analysis + integración LMS (Canvas, Blackboard, etc).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <h2 class="section-title">Impacto Medible</h2>
+            <p class="section-subtitle">Resultados verificados en instituciones piloto</p>
+            
+            <div class="benefits-grid">
+                <ul class="benefits-list">
+                    <li>+40% retención estudiantil garantizado.</li>
+                    <li>-60% deserción en poblaciones neurodivergentes.</li>
+                    <li>+92% satisfacción de instituciones.</li>
+                    <li>ROI 1,400% en año 1 (verified).</li>
+                    <li>Break-even en 10-15 días de implementación.</li>
+                </ul>
+                
+                <div class="benefits-image">
+                    <div class="benefits-placeholder">📊</div>
+                    <div class="benefits-placeholder-text">Métricas Avanzadas<br/>Real-Time + Predictivas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD SECTION -->
+    <section class="dashboard">
+        <div class="container">
+            <h2 class="section-title">Dashboard Ejecutivo</h2>
+            <p class="section-subtitle">Control total sobre retención institucional</p>
+            
+            <div class="dashboard-container">
+                <div class="dashboard-placeholder">📈</div>
+                <div class="dashboard-placeholder-text">Analytics Avanzado + Reportes Automáticos<br/>Integración Completa LMS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="piloto" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Modelo de Precios</h2>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Plan PRO</h3>
+                    <div class="price">$500 USD/mes</div>
+                    <p class="price-note">1-5 instituciones | Hasta 5,000 estudiantes</p>
+                </div>
+                
+                <ul class="features-list">
+                    <li>Regulación predictiva avanzada</li>
+                    <li>Dashboard completo profesor/admin</li>
+                    <li>Integraciones 5 LMS</li>
+                    <li>Soporte prioritario 24/7</li>
+                    <li>Capacitación staff incluida</li>
+                    <li>Reportes automáticos + ROI tracking</li>
+                </ul>
+                
+                <div class="pricing-cta">
+                    <a href="https://wa.me/573170201389?text=Interesado%20en%20Plan%20PRO%20-%20NEUROPATH" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;" target="_blank">
+                        Solicitar Demo
+                    </a>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 2rem; background: #e0f2fe; border-radius: 12px; text-align: center;">
+                    <h4 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Plan ENTERPRISE Personalizado</h4>
+                    <p style="color: var(--gray);">5+ instituciones | >5,000 estudiantes | On-Premise Option</p>
+                    <p style="color: var(--primary); font-weight: 600; margin-top: 0.5rem;">Contacta para pricing custom</p>
+                </div>
+                
+                <div class="disclaimer">
+                    <strong>✅ Incluido en ambos planes:</strong>
+                    <p>✓ Demo gratuito 14 días | ✓ Implementación (2-4 semanas) | ✓ Capacitación completa | ✓ Soporte dedicado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="audience">
+        <div class="container">
+            <h2 class="section-title">¿Para Quién es NEUROPATH?</h2>
+            <div class="audience-grid">
+                <div class="audience-item">
+                    <div style="font-size: 3rem;">🏫</div>
+                    <h4>Colegios Públicos & Privados</h4>
+                </div>
+                <div class="audience-item">
+                    <div style="font-size: 3rem;">🎓</div>
+                    <h4>Universidades & Institutos</h4>
+                </div>
+                <div class="audience-item">
+                    <div style="font-size: 3rem;">🌍</div>
+                    <h4>Gobiernos & Ministerios</h4>
+                </div>
+                <div class="audience-item">
+                    <div style="font-size: 3rem;">❤️</div>
+                    <h4>ONGs Educativas</h4>
+                </div>
+            </div>
+            <div style="margin-top: 3rem;">
+                <a href="https://wa.me/573170201389?text=Quiero%20agendar%20una%20demo%20institucional%20de%20NEUROPATH" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;" target="_blank">
+                    Agendar Demo Institucional
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h2>NEUROPATH — NEURONOVA GLOBAL</h2>
+            <p>CEO & Fundadora: <strong>Johanna Patricia Dallos Castellanos</strong></p>
+            <p>📱 WhatsApp: <a href="https://wa.me/573170201389" target="_blank">+57 3170201389</a></p>
+            <p>📧 Email: <a href="mailto:johanna@neuronova.global">johanna@neuronova.global</a></p>
+            <p>🌐 GitHub: <a href="https://github.com/donchiqui/neuropath" target="_blank">github.com/donchiqui/neuropath</a></p>
+            <div class="footer-bottom">
+                <p>© 2026 NEURONOVA GLOBAL — La solución global 360° para retención neurodivergente</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function startVideoDemo() {
+            const overlay = document.getElementById('videoOverlay');
+            overlay.classList.add('active');
+            document.body.classList.add('video-mode');
+            
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                runVideoSequence();
+            }, 1500);
+        }
+
+        function runVideoSequence() {
+            const sections = [
+                { id: '#hero', duration: 5000 },
+                { id: '.stats-bar', duration: 3000 },
+                { id: '#problema', duration: 6000 },
+                { id: '#funciones', duration: 5000 },
+                { id: '#beneficios', duration: 5000 },
+                { id: '.dashboard', duration: 5000 },
+                { id: '#piloto', duration: 5000 },
+                { id: '.audience', duration: 4000 }
+            ];
+
+            let index = 0;
+
+            function scrollToNext() {
+                if (index >= sections.length) {
+                    setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        document.body.classList.remove('video-mode');
+                    }, 2000);
+                    return;
+                }
+
+                const section = sections[index];
+                const element = document.querySelector(section.id);
+                
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    if(section.id === '#beneficios') {
+                        const items = document.querySelectorAll('.benefits-list li');
+                        items.forEach((item, i) => {
+                            setTimeout(() => item.classList.add('visible'), i * 500);
+                        });
+                    }
+                }
+
+                index++;
+                setTimeout(scrollToNext, section.duration);
+            }
+
+            scrollToNext();
+        }
+
+        // Intersection Observer para animaciones
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.feature-card, .audience-item, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
