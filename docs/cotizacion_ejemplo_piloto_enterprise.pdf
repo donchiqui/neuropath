@@ -1,0 +1,73 @@
+COTIZACIÓN EJEMPLO — NEUROPATH
+
+Cliente: [Nombre del cliente]
+Fecha: 2026-08-11
+Moneda base mostrada: USD (convertida a COP y EUR con tasa fija actual)
+
+TIPO DE PROPUESTA A: PILOTO (escuela pequeña) — 200 alumnos, 3 meses
+
+Detalle:
+- Licencias por alumno (tarifa institucional pequeña): $8 / alumno / mes
+  200 alumnos x 3 meses x $8 = $4,800 USD
+- Onboarding y formación: $1,500 USD
+- Total antes de impuestos: $6,300 USD
+- Impuesto (IVA 19%): $1,197 USD
+- Total con impuestos: $7,497 USD
+
+Conversiones (tasa fija actual utilizada):
+- 1 USD = 3,140.79 COP
+- 1 EUR = 1.1538 USD
+
+- Total con impuestos en COP: 7,497 USD x 3,140.79 = 23,546,503 COP (aprox.)
+- Total con impuestos en EUR: 7,497 USD ÷ 1.1538 ≈ 6,498 EUR (aprox.)
+
+Incluye:
+- 200 licencias temporales (3 meses)
+- Portal admin con asignación de licencias
+- Onboarding remoto (1 sesión de 3 horas)
+- Soporte por email durante el piloto
+
+Condiciones:
+- Pago: transferencia o factura antes del inicio del piloto.
+- Vencimiento de la oferta: 30 días.
+
+CONTACTO COMERCIAL:
+- Nombre: [Tu nombre]
+- Email: [tu@email.com]
+- Teléfono: [+57 ...]
+
+
+--------------------------------------------------------------------------------
+
+TIPO DE PROPUESTA A (continuación): ENTERPRISE (ejemplo)
+
+Escenario ejemplo: 10,000 alumnos — contrato anual enterprise
+
+Detalle:
+- Tarifa enterprise ejemplo: Base anual $12,000 + $3.50 / alumno / mes
+  -> Costo por alumno anual: $3.50 x 12 = $42 / alumno / año
+  -> Costo total por alumnos: 10,000 x $42 = $420,000 USD
+- Base anual: $12,000 USD
+- Total antes de impuestos: $432,000 USD
+- Impuesto (IVA 19%): $82,080 USD
+- Total con impuestos: $514,080 USD
+
+- Total con impuestos en COP: 514,080 USD x 3,140.79 = 1,614,617,323 COP (aprox.)
+- Total con impuestos en EUR: 514,080 USD ÷ 1.1538 ≈ 445,475 EUR (aprox.)
+
+Incluye (ejemplo enterprise):
+- Licencias por 10,000 alumnos
+- Portal admin y APIs
+- Integraciones SSO/LMS (SAML/LTI) básicas
+- SLA (nivel estándar) y soporte prioritario
+- Formación para equipos y documentación
+- Posibilidad de hosting privado o on-premise (coste extra)
+
+Condiciones y despliegue:
+- Plazo de implementación estimado: 6–10 semanas
+- Pago: contrato anual con factura y renovación automática (si aplica)
+- Se puede cotizar hosting dedicado, integraciones a medida, y SLA 24/7 (tarifa adicional)
+
+Fuentes de la tasa de cambio utilizadas:
+1. https://www.exchange-rates.org/converter/cop-usd
+2. https://www.exchange-rates.org/converter
