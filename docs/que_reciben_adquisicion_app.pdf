@@ -1,0 +1,101 @@
+QUÉ RECIBEN AL ADQUIRIR LA APP — NEUROPATH IA
+
+Fecha: 2026-08-11
+Contacto comercial:
+- Johanna Patricia Dallos Castellanos
+- castellanosanalisis@gmail.com
+- +57 3170201389
+- Logo en: docs/logo_neuropath.png
+
+Resumen
+Al adquirir Neuropath IA (app móvil + portal web) el comprador recibe un paquete completo que incluye el software, funcionalidades según rol, servicios de soporte y formación, y opciones de integración y cumplimiento legal. Abajo se detallan los entregables y servicios por tipo de comprador.
+
+1) Alumno (Usuario individual)
+- Acceso a la app móvil y portal web con cuenta personal.
+- Perfil personalizado y seguimiento del progreso.
+- Motor predictivo y recomendaciones de aprendizaje personalizadas.
+- Contenido adaptativo y actividades interactivas.
+- Alertas y notificaciones (progreso, tareas, recomendaciones).
+- Export básico de progreso (CSV/PDF) y resumen de sesiones.
+- Soporte por email para incidencias básicas.
+- Tutorial inicial en la app y material de ayuda en línea.
+
+2) Profesor
+- Todo lo que recibe un alumno.
+- Panel docente (dashboard) para ver rendimiento y progreso de su grupo.
+- Herramientas de asignación de actividades y seguimiento individualizado.
+- Informes por alumno y por grupo (PDF/CSV) con métricas clave.
+- Biblioteca de recursos pedagógicos y plantillas de evaluación.
+- Posibilidad de comunicación interna con alumnos (mensajería limitada).
+- Formación remota de inicio para el equipo docente (sesión en vivo).
+
+3) Especialista (profesionales de salud / terapeutas)
+- Todo lo anterior (alumno + profesor).
+- Dashboard clínico con historial detallado de cada paciente/usuario.
+- Herramientas para registrar observaciones clínicas, intervenciones y notas.
+- Ajustes avanzados del motor por caso/paciente (parametrización terapéutica).
+- Export clínico profesional (PDF/CSV) con formatos para historias clínicas.
+- Prioridad de soporte técnico y asesoría en uso clínico.
+- Opciones de consentimiento informado y control de acceso a datos sensibles.
+
+4) Institución (colegios, centros educativos)
+- Portal Admin para gestión centralizada de cuentas y licencias.
+- Subida masiva de rostering (CSV) y/o provisioning via SCIM (si aplica).
+- SSO (SAML/LTI) para integración con sistemas institucionales.
+- Asignación por lotes y generación de códigos de activación.
+- Reportes agregados por curso, sede y periodo (descargables).
+- Plan de onboarding y formación para administradores y docentes.
+- SLA básico de soporte y mantenimiento; opciones de soporte premium.
+
+5) Enterprise / Grandes clientes
+- Todo lo incluido para Institución, ampliado para despliegues a gran escala.
+- Integraciones a medida (APIs, SSO avanzado, conexión con HIS/SIS/LMS).
+- Opciones de hosting: cloud regional o hosting privado / on‑premise (según contrato).
+- SLA avanzado (tiempos de respuesta, disponibilidad garantizada) y soporte 24/7 opcional.
+- Servicios profesionales: integración, migración de datos, personalización y formación presencial.
+- Posibilidad de acuerdos comerciales (descuentos por volumen, contratos plurianuales).
+
+6) Entregables técnicos y documentales
+- Accesos/credenciales para administradores y usuarios.
+- Manual de usuario (PDF) y guía rápida para docentes y administradores.
+- Documentación técnica de APIs y guías de integración (JSON, OpenAPI si aplica).
+- Plantillas CSV para roster y migración de usuarios.
+- Registro de versiones y notas de release.
+
+7) Servicios incluidos y opcionales
+Incluidos (por defecto dependiendo de la licencia comprada):
+- Actualizaciones del software y parches de seguridad.
+- Soporte por email (horario y SLA depende del plan).
+- Hosting y backups para planes SaaS.
+
+Opcionales (servicios de pago):
+- Migración y carga inicial de datos por el equipo técnico.
+- Integraciones SAML/LTI/SCIM a medida.
+- Formación presencial o talleres extendidos.
+- Personalizaciones de marca y contenido.
+- Hosting dedicado o instalación on‑premise.
+- SLA premium y soporte 24/7.
+
+8) Privacidad y cumplimiento
+- El servicio cumple con la normativa aplicable sobre protección de datos; ofrecemos DPA (Data Processing Agreement) a solicitud.
+- Opciones de anonimización y controles de acceso para datos sensibles.
+- Posibilidad de despliegue regional para cumplimiento de jurisdicciones.
+
+9) Procedimiento de entrega y activación
+- Compra/Contrato firmado → facturación → provisión de licencias.
+- Envío de acceso al portal admin y generación de códigos de activación.
+- Onboarding remoto y formación inicial según paquete contratado.
+- Asistencia durante el periodo de implementación y soporte post‑lanzamiento.
+
+10) Garantías y condiciones
+- Soporte y actualizaciones durante la vigencia de la licencia o contrato.
+- Renovación automática o manual según condiciones pactadas.
+- Condiciones de cancelación y reembolso según el contrato.
+
+Contacto y siguientes pasos
+- Para una propuesta personalizada, demo o contrato, contacta a:
+  Johanna Patricia Dallos Castellanos
+  castellanosanalisis@gmail.com
+  +57 3170201389
+
+Este documento se entrega como resumen de entregables al adquirir Neuropath IA. Para incluirlo como PDF listo para enviar, lo subiré a: docs/que_reciben_adquisicion_app.pdf en el repositorio y te pasaré el enlace de descarga.
