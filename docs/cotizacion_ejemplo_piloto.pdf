@@ -4,7 +4,7 @@ Cliente: [Nombre del cliente]
 Fecha: 2026-08-11
 Moneda base mostrada: USD (convertida a COP y EUR con tasa fija actual)
 
-Tipo de propuesta: Piloto (escuela pequeña) — 200 alumnos, 3 meses
+TIPO DE PROPUESTA A: PILOTO (escuela pequeña) — 200 alumnos, 3 meses
 
 Detalle:
 - Licencias por alumno (tarifa institucional pequeña): $8 / alumno / mes
@@ -35,3 +35,8 @@ CONTACTO COMERCIAL:
 - Nombre: Johanna Patricia Dallos Castellanos
 - Email: castellanosanalisis@gmail.com
 - Teléfono: +57 3170201389
+
+LOGO: docs/logo_neuropath.png (adjunto)
+
+CLÁUSULA DPA (resumen):
+El tratamiento de datos personales y sensibles se realiza conforme a la normativa vigente; se podrá firmar un DPA (Data Processing Agreement) que establezca responsabilidades, medidas de seguridad y condiciones de acceso a datos de estudiantes y pacientes.
